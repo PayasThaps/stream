@@ -5,19 +5,17 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+# Set up Streamlit app configuration
+st.set_page_config(page_title="Enhanced Marketing Dashboard", layout="wide")
+
 # Load dataset
 uploaded_file = "https://github.com/vaidyamohit/Marketing-Dashboard/raw/main/Dataset%20Marketing.xlsx"
-df = pd.read_excel(uploaded_file, engine="openpyxl")
 
-# Cache data for performance optimization
 @st.cache_data
 def load_data():
-    return df.copy()
+    return pd.read_excel(uploaded_file, engine="openpyxl")
 
 data = load_data()
-
-# Set up Streamlit app
-st.set_page_config(page_title="Enhanced Marketing Dashboard", layout="wide")
 
 # Title
 st.title("Enhanced Marketing Dashboard 📊")
